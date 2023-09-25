@@ -1,0 +1,2 @@
+# pygame-SJ
+Samsun Jjambbong
