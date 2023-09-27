@@ -1,0 +1,2 @@
+import pygame  # 파이게임 라이브러리를 불러옴
+import random
