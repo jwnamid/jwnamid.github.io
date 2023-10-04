@@ -40,11 +40,11 @@ def tick():
             sys.exit()
         elif event.type == KEYDOWN:
             if event.key == K_LEFT:
-                if PADDLE.rect.centerx > 50:
-                    PADDLE.rect.centerx -= 10
+                if PADDLE.rect.centerx > 55:
+                    PADDLE.rect.centerx -= 5
             elif event.key == K_RIGHT:
-                if PADDLE.rect.centerx < 550:
-                    PADDLE.rect.centerx += 10
+                if PADDLE.rect.centerx < 545:
+                    PADDLE.rect.centerx += 5
     for BALL in BALLS:
         if BALL.rect.centery < 1000:
             BALL.move()
@@ -107,7 +107,7 @@ def init():
     endTime = 0.0
  
 def main():
-    global isNeedToRestart, score, isFeverTime, startTime, endTime
+    global isNeedToRestart, score, isFeverTime, startTime, endTime, stage
  
     """ 메인 루틴 """
     myfont = pygame.font.SysFont(None, 80)
@@ -138,10 +138,12 @@ def main():
             block.draw()        
  
         # 블록을 모두 제거하면 성공
-        if len(BLOCKS) == 0:
-             block.draw()   
+        if len(BLOCKS) == 0:           
              stage += 1
-        
+             for ypos, color in enumerate(colors, start=0):
+                for xpos in range(0, 5):
+                    BLOCKS.append(Block(color, Rect(xpos * 100 + 60, ypos * 50 + 40, 80, 30)))       
+
         # 공이 패들 밑으로 내려가면 해당 공은 삭제
         for BALL in BALLS:
             if BALL.rect.centery > 800 and len(BLOCKS) > 0:
@@ -157,6 +159,9 @@ def main():
         # 스코어 보드
         mess_score = scorefont.render("score : " + str(score), True, (255, 255, 255))
         SURFACE.blit(mess_score, (10, 10))
+
+        mess_stage = scorefont.render("stage : " + str(stage), True, (255, 255, 255))
+        SURFACE.blit(mess_stage, (520, 10))
  
         pygame.display.update()
         FPSCLOCK.tick(fps)
