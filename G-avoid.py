@@ -19,3 +19,29 @@ background = pygame.image.load("C:/git-workspace/pygame-SJ/back.png")
 character = pygame.image.load("C:/git-workspace/pygame-SJ/player_small.png:)
 enemy = pygame.image.load("C:/git-workspace/pygame-SJ/enemy_small.png")
 
+character_size = character.get_rect().size
+character_width = character_size[0]
+character_height = character_size[1]
+
+enemy_size = enemy.get_rect().size
+enemy_width = enemy_size[0]
+enemy_height = enemy_size[1]
+
+character_x_pos = (screen_width / 2) - (character_width / 2)
+character_y_pos = screen_height - character_height
+
+enemy_x_pos = random.randint(0, (screen_width - character_width))
+enemy_y_pos = 0
+
+to_x = 0
+to_y = 0
+
+character_speed = 0.5
+enemy_speed = 1
+
+game_over_font = pygame.font.Font(None, 100)
+game_font = pygame.font.Font(None, 40)
+
+start_ticks = pygame.time.get_ticks()
+avoid_enemies = 0
+
