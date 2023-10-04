@@ -55,7 +55,7 @@ def tick():
                 if not x.rect.colliderect(BALL.rect)]
         if len(BLOCKS) != prevlen:
             BALL.dir *= -1
-            score += 100 # get score + 100
+            score += 10 * stage
  
  
 
@@ -87,7 +87,8 @@ isFeverTime = False
 score = 0
 startTime = 0.0
 endTime = 0.0
- 
+stage = 1
+
 # 초기화
 def init():
     global SURFACE, FPSCLOCK, BLOCKS, PADDLE, BALLS, isNeedToRestart, isFeverTime, score, startTime, endTime
@@ -116,8 +117,7 @@ def main():
     mess_over = myfont.render("Game Over!", True, (255, 255, 0))
     mess_replay = smallfont.render("replay (press r)", True, (255, 0, 0))
     fps = 30
-    colors = [(255, 0, 0), (255, 165, 0), (242, 242, 0),
-              (0, 128, 0), (128, 0, 128), (0, 0, 250)]
+    colors = [(255, 0, 0), (255, 165, 0), (242, 242, 0)]
  
     # 블록을 추가해준다.
     for ypos, color in enumerate(colors, start=0):
@@ -139,26 +139,15 @@ def main():
  
         # 블록을 모두 제거하면 성공
         if len(BLOCKS) == 0:
-            SURFACE.blit(mess_clear, (200, 400))
+             block.draw()   
+             stage += 1
         
         # 공이 패들 밑으로 내려가면 해당 공은 삭제
         for BALL in BALLS:
             if BALL.rect.centery > 800 and len(BLOCKS) > 0:
                 BALLS.remove(BALL)
  
-        # 피버타임이 끝난 경우
-        if isFeverTime == False and startTime != 0.0 and endTime != 0.0:
-            # 공 하나만 제외하고 모두 제거
-            for BALL in BALLS:
-                BALLS.remove(BALL)
-                if(len(BALLS) == 1):
-                    break
-            startTime = 0.0
-            endTime = 0.0
-            # 속도 10으로 원복
-            for BALL in BALLS:
-                BALL.speed = 10
- 
+
         # 공이 하나도 없는 경우(끝난 경우)
         if len(BALLS) <= 0:
             SURFACE.blit(mess_over, (150, 400))
