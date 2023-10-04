@@ -27,17 +27,7 @@ class Block:
         else:
             pygame.draw.ellipse(SURFACE, self.col, self.rect)
  
-# 피버 타임 이벤트
-def feverTime():
-    global BALLS
- 
-    # 공 두개를 추가해주고
-    for i in range(2):
-        BALLS.append(Block((200, 242, 0), Rect(300, 400, 20, 20), 10))
- 
-    # 공의 속도를 15로 맞춘다.
-    for BALL in BALLS:
-        BALL.speed = 10
+
  
 def tick():
     """ 프레임별 처리 """
@@ -50,14 +40,16 @@ def tick():
             sys.exit()
         elif event.type == KEYDOWN:
             if event.key == K_LEFT:
-                PADDLE.rect.centerx -= 10
+                if PADDLE.rect.centerx > 50:
+                    PADDLE.rect.centerx -= 10
             elif event.key == K_RIGHT:
-                PADDLE.rect.centerx += 10
+                if PADDLE.rect.centerx < 550:
+                    PADDLE.rect.centerx += 10
     for BALL in BALLS:
         if BALL.rect.centery < 1000:
             BALL.move()
  
-        # 블록과 충돌하면
+        # 공이 블록과 충돌하면
         prevlen = len(BLOCKS)
         BLOCKS = [x for x in BLOCKS
                 if not x.rect.colliderect(BALL.rect)]
@@ -65,31 +57,23 @@ def tick():
             BALL.dir *= -1
             score += 100 # get score + 100
  
-        # 점수가 1000점이고, 피버타임이 아니면 피버타임으로 진입한다.
-        if score == 1000 and isFeverTime == False:
-            isFeverTime = True
-            feverTime()
-        # 10초를 카운트하고 10초 뒤에는 피버타임을 off한다.
-        elif isFeverTime == True:    
-            if startTime == 0.0:
-                startTime = time.time()
-            elif startTime != 0.0:
-                endTime = time.time()
-                if endTime - startTime >= 10: # 10초
-                    isFeverTime = False
  
-        # 패들과 충돌하면
+
+        # 공이 패들과 충돌하면
         if PADDLE.rect.colliderect(BALL.rect):
             BALL.dir = 90 + (PADDLE.rect.centerx - BALL.rect.centerx) \
                 / PADDLE.rect.width * 80
  
-        # 벽과 충돌하면
+        # 공이 벽과 충돌하면
         if BALL.rect.centerx < 0 or BALL.rect.centerx > 600:
             BALL.dir = 180 - BALL.dir
         if BALL.rect.centery < 0:
             BALL.dir = -BALL.dir
             BALL.speed = 15
- 
+
+        # 패들과 벽이 충돌하면
+
+
 pygame.init()
 pygame.key.set_repeat(5, 5)
 SURFACE = pygame.display.set_mode((600, 800))
