@@ -16,7 +16,7 @@ clock = pygame.time.Clock()
 
 # 사용자 게임 초기화 (배경화면, 게임 이미지, 좌표, 속도, 폰트 등)
 background = pygame.image.load("C:/git-workspace/pygame-SJ/back.png")
-character = pygame.image.load("C:/git-workspace/pygame-SJ/player_small.png:")
+character = pygame.image.load("C:/git-workspace/pygame-SJ/player_small.png")
 enemy = pygame.image.load("C:/git-workspace/pygame-SJ/enemy_small.png")
 
 character_size = character.get_rect().size
