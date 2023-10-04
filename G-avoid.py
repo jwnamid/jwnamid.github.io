@@ -45,3 +45,23 @@ game_font = pygame.font.Font(None, 40)
 start_ticks = pygame.time.get_ticks()
 avoid_enemies = 0
 
+# 이벤트 루프
+running = True
+while running:
+    dt = clock.tick(30)
+    to_y = 0
+    to_y += enemy_speed
+    # 2. 키 입력 이벤트 처리
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                to_x -= character_speed
+            elif event.key == pygame.K_RIGHT:
+                to_x += character_speed
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                to_x = 0
