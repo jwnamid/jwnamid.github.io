@@ -16,14 +16,36 @@ pygame.display.set_caption('Baseball Game')
 font = pygame.font.SysFont('Constantia', 30)
 
 #define colours
-bg = (204, 102, 0)
+bg = (0, 102, 0)
 red = (255, 0, 0)
 black = (0, 0, 0)
 white = (255, 255, 255)
 
+# 랜덤 변수 생성
+answer = random.randrange(100,900,1)
+
 #define global variable
 clicked = False
-counter = 0
+counter = answer
+
+
+class panel():
+	#colours for button and text
+	button_col = (255, 0, 0)
+	hover_col = (75, 225, 255)
+	click_col = (50, 150, 255)
+	text_col = black
+	width = 100
+	height = 70
+
+	def __init__(self,x,y,answer):
+		self.x = x
+		self.y = y
+		self.answer = answer
+		
+	def draw_panel(self):
+		panel_rect = Rect(self.x, self.y, self.width, self.height)
+
 
 class button():
 		
@@ -77,8 +99,6 @@ class button():
 		return action
 
 
-# 랜덤 변수 생성
-answer = random.randrange(100,900,1)
 
 # 사용자 입력 숫자의 총합
 checkPlace = 0 # 사용자가 누른 숫자의 자릿수 체크
@@ -103,15 +123,25 @@ deleteNum = button(600, 500, 'Del')
 checkNum = button(800, 500, 'Check')
 
 # 출력창 변수
+panel_1 = panel(600,200,'1')
+
+
 myFont = pygame.font.SysFont(None, 50) #(글자체, 글자크기) None=기본글자체
  
 run = True
 while run:
-
 	screen.fill(bg)
+	for turn in range(5):
+		''
+
+
+
+
+
+	
 	# 사용자 입력용 숫자 키패드	
 	if one.draw_button():
-		print('Two')
+		print(answer)
 	if two.draw_button():
 		print('Two')
 	if three.draw_button():
@@ -133,15 +163,26 @@ while run:
 	if deleteNum.draw_button():
 		print('Two')
 	if checkNum.draw_button():
-		print('Two')
+		userNum = '사용자가 누르는 숫자 123'
+		counter_img = font.render('ddd', True, red)
+		screen.blit(counter_img, (100, 100))
+		pygame.display.update() #모든 화면 그리기 업데이트
 
 # render함수로 사용자가 누른 숫자 출력(문자열이 아니면 str로 변환해야함)
 	#myText = myFont.render("Hello World " + True, (0,0,255)) #(Text,anti-alias, color)
+	
+	if panel_1.draw_panel():
+		print('Yessssssssssssssssssssssssssssssssssss')
+
+
+
+
 
 	counter_img = font.render(str(counter), True, red)
 	screen.blit(counter_img, (280, 450))
+	counter_img = font.render('Yessssssssssss', True, red)
+	screen.blit(counter_img, (100, 100))
 	#screen.blit(myText, (100,100)) #(글자변수, 위치)
-
 
 
 
