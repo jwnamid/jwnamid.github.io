@@ -27,7 +27,9 @@ answer = random.randrange(100,900,1)
 #define global variable
 clicked = False
 counter = answer
-
+firstNum = 0
+secondNum = 0
+thirdNum = 0
 
 class panel():
 	#colours for button and text
@@ -69,6 +71,7 @@ class button():
 
 		#get mouse position
 		pos = pygame.mouse.get_pos()
+		
 
 		#create pygame Rect object for the button
 		button_rect = Rect(self.x, self.y, self.width, self.height)
@@ -78,6 +81,7 @@ class button():
 			if pygame.mouse.get_pressed()[0] == 1:
 				clicked = True
 				pygame.draw.rect(screen, self.click_col, button_rect)
+				self.append_value(firstNum)
 			elif pygame.mouse.get_pressed()[0] == 0 and clicked == True:
 				clicked = False
 				action = True
@@ -98,7 +102,18 @@ class button():
 		screen.blit(text_img, (self.x + int(self.width / 2) - int(text_len / 2), self.y + 25))
 		return action
 
-
+	def append_value(self,new_value):
+	# Set a limit of values that can be entered
+		if self.text.get_width() < 260:
+			if self.value == "0" or self.new_entry:
+				self.value = new_value
+				self.new_entry = False
+			else:
+				self.value += new_value
+			
+		self.text = self.font.render(self.value,True,BLACK)
+		# Set key_pressed as true
+		self.key_pressed = True
 
 # 사용자 입력 숫자의 총합
 checkPlace = 0 # 사용자가 누른 숫자의 자릿수 체크
@@ -141,31 +156,33 @@ while run:
 	
 	# 사용자 입력용 숫자 키패드	
 	if one.draw_button():
-		print(answer)
+		firstNum = 1
+		append
+
 	if two.draw_button():
-		print('Two')
+		firstNum = 2
 	if three.draw_button():
-		print('Two')
+		firstNum = 3
 	if four.draw_button():
-		print('Two')
+		firstNum = 4
 	if five.draw_button():
-		print('Two')
+		firstNum = 5
 	if six.draw_button():
-		print('Two')
+		firstNum = 6
 	if seven.draw_button():
-		print('Two')
+		firstNum = 7
 	if eight.draw_button():
-		print('Two')
+		firstNum = 8
 	if nine.draw_button():
-		print('Two')
+		firstNum = 9
 	if zero.draw_button():
-		print('Two')
+		firstNum = 0
 	if deleteNum.draw_button():
 		print('Two')
 	if checkNum.draw_button():
 		userNum = '사용자가 누르는 숫자 123'
 		counter_img = font.render('ddd', True, red)
-		screen.blit(counter_img, (100, 100))
+		screen.blit(counter_img, (280, 450))
 		pygame.display.update() #모든 화면 그리기 업데이트
 
 # render함수로 사용자가 누른 숫자 출력(문자열이 아니면 str로 변환해야함)
