@@ -65,3 +65,46 @@ while running:
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 to_x = 0
+
+# 3. 게임 캐릭터 위치 정의
+    character_x_pos += to_x * dt
+    enemy_y_pos += to_y * dt
+
+    if character_x_pos < 0:
+        character_x_pos = 0
+    elif character_x_pos > (screen_width - character_width):
+        character_x_pos = screen_width - character_width
+
+    if enemy_y_pos > screen_height:
+        enemy_x_pos = random.randint(0, (screen_width - character_width))
+        enemy_y_pos = 0
+        avoid_enemies += 1
+
+    elapsed_time = (pygame.time.get_ticks() - start_ticks) / 1000
+
+    timer = game_font.render('Time:{}'.format(round(elapsed_time, 2)), True, (255, 255, 255))
+    avoided = game_font.render('You avoided: {}'.format(avoid_enemies), True, (255, 255, 255))
+    game_over = game_over_font.render('GameOver!', True, (255, 255, 255))
+
+ # 5. 화면에 그리기
+    screen.blit(background, (0, 0))
+    screen.blit(character, (character_x_pos, character_y_pos))
+    screen.blit(enemy, (enemy_x_pos, enemy_y_pos))
+    screen.blit(timer, (10, 10))
+    screen.blit(avoided, (200, 10))
+
+    character_rect = character.get_rect()
+    character_rect.left = character_x_pos
+    character_rect.top = character_y_pos
+    enemy_rect = enemy.get_rect()
+    enemy_rect.left = enemy_x_pos
+    enemy_rect.top = enemy_y_pos
+
+    if character_rect.colliderect(enemy_rect):
+        screen.blit(game_over, (50, 100))
+        running = False
+
+    pygame.display.update()
+
+pygame.time.delay(2000)
+pygame.quit()  # 게임 종료
