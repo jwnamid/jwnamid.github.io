@@ -69,7 +69,7 @@ def tick():
             BALL.dir = 180 - BALL.dir
         if BALL.rect.centery < 0:
             BALL.dir = -BALL.dir
-            BALL.speed = 15
+            BALL.speed = 15 - 1 + stage 
 
         # 패들과 벽이 충돌하면
 
@@ -91,7 +91,7 @@ stage = 1
 
 # 초기화
 def init():
-    global SURFACE, FPSCLOCK, BLOCKS, PADDLE, BALLS, isNeedToRestart, isFeverTime, score, startTime, endTime
+    global SURFACE, FPSCLOCK, BLOCKS, PADDLE, BALLS, isNeedToRestart, isFeverTime, score, stage, startTime, endTime
  
     pygame.init()
     pygame.key.set_repeat(5, 5)
@@ -103,6 +103,7 @@ def init():
     isNeedToRestart = False
     isFeverTime = False
     score = 0
+    stage = 1
     startTime = 0.0
     endTime = 0.0
  
