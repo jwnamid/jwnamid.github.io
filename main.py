@@ -1,45 +1,110 @@
-import sys
-import pygame
-from pygame.locals import *
+import pygame # 파이게임 라이브러리 불러옴
+import random
 
-# 출처 : https://wonhwa.tistory.com/44
-BLACK = (0,0,0)
-WHITE = (255,255,255)
+pygame.init() #초기화
 
-## 게임 창 설정 ##
-GameDisplay = pygame.display.set_mode((640,440))
-GameDisplay.fill(WHITE) #하얀색으로 배경 채우기
-pygame.display.set_caption("PYGAME Example") # 창 이름 설정
+# 화면 크기 설정
+screen_width = 480 # 가로 크기
+screen_height = 640 # 세로 크기
+screen = pygame.display.set_mode((screen_width, screen_height))
 
-## 선(line) 및 도형 그리기 ##
-# pointlist: 튜플형식으로 각 포인트(각)의 좌표를 설정
-# start_point, end_point, centerpoint: 시작 좌표, 끝점, 가운데 좌표
-# width: 도형 테두리 굵기 지정
-"""
-# 선
-pygame.draw.line(surface, color, start_point, end_point, width)
-pygame.draw.lines(surface, color, closed, pointlist, width)
+# 화면 타이틀 설정
+pygame.display.set_caption("낙하물 피하기")
 
-# 면
-pygame.draw.polygon(surface, color, pointlist, width)
+# FPS
+clock = pygame.time.Clock()
 
-# 원
-pygame.draw.circle(surface, color, center_point, radius, width)
-pygame.draw.line(GameDisplay,BLUE,(180,60),(220,60))
+# 사용자 게임 초기화 (배경화면, 게임 이미지, 좌표, 속도, 폰트 등)
+background = pygame.image.load("C:/git-workspace/pygame-SJ/back.png")
+character = pygame.image.load("C:/git-workspace/pygame-SJ/player_small.png")
+enemy = pygame.image.load("C:/git-workspace/pygame-SJ/enemy_small.png")
 
-pygame.draw.rect(GameDisplay,RED,(300,20,50,50),2)
+character_size = character.get_rect().size
+character_width = character_size[0]
+character_height = character_size[1]
 
-pygame.draw.ellipse(GameDisplay,GREEN,(400,20,80,50),2)
+enemy_size = enemy.get_rect().size
+enemy_width = enemy_size[0]
+enemy_height = enemy_size[1]
 
+character_x_pos = (screen_width / 2) - (character_width / 2)
+character_y_pos = screen_height - character_height
 
+enemy_x_pos = random.randint(0, (screen_width - character_width))
+enemy_y_pos = 0
 
-##Game loop 설정: 게임이 진행되는 동안 실행되는 이벤트(함수)들 만들기##
+to_x = 0
+to_y = 0
 
-# 게임을 종료시키는 함수
-while True:
-    pygame.display.update()
+character_speed = 0.5
+enemy_speed = 1
+
+game_over_font = pygame.font.Font(None, 100)
+game_font = pygame.font.Font(None, 40)
+
+start_ticks = pygame.time.get_ticks()
+avoid_enemies = 0
+
+# 이벤트 루프
+running = True
+while running:
+    dt = clock.tick(30)
+    to_y = 0
+    to_y += enemy_speed
+    # 2. 키 입력 이벤트 처리
     for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
-    FramePerSec.tick(FPS)
+        if event.type == pygame.QUIT:
+            running = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                to_x -= character_speed
+            elif event.key == pygame.K_RIGHT:
+                to_x += character_speed
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                to_x = 0
+
+# 3. 게임 캐릭터 위치 정의
+    character_x_pos += to_x * dt
+    enemy_y_pos += to_y * dt
+
+    if character_x_pos < 0:
+        character_x_pos = 0
+    elif character_x_pos > (screen_width - character_width):
+        character_x_pos = screen_width - character_width
+
+    if enemy_y_pos > screen_height:
+        enemy_x_pos = random.randint(0, (screen_width - character_width))
+        enemy_y_pos = 0
+        avoid_enemies += 1
+
+    elapsed_time = (pygame.time.get_ticks() - start_ticks) / 1000
+
+    timer = game_font.render('Time:{}'.format(round(elapsed_time, 2)), True, (255, 255, 255))
+    avoided = game_font.render('You avoided: {}'.format(avoid_enemies), True, (255, 255, 255))
+    game_over = game_over_font.render('GameOver!', True, (255, 255, 255))
+
+ # 5. 화면에 그리기
+    screen.blit(background, (0, 0))
+    screen.blit(character, (character_x_pos, character_y_pos))
+    screen.blit(enemy, (enemy_x_pos, enemy_y_pos))
+    screen.blit(timer, (10, 10))
+    screen.blit(avoided, (200, 10))
+
+    character_rect = character.get_rect()
+    character_rect.left = character_x_pos
+    character_rect.top = character_y_pos
+    enemy_rect = enemy.get_rect()
+    enemy_rect.left = enemy_x_pos
+    enemy_rect.top = enemy_y_pos
+
+    if character_rect.colliderect(enemy_rect):
+        screen.blit(game_over, (50, 100))
+        running = False
+
+    pygame.display.update()
+
+pygame.time.delay(2000)
+pygame.quit()  # 게임 종료
