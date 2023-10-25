@@ -50,11 +50,13 @@ while not game_over:
                 y1_change = snake_block
                 x1_change = 0
  
+    if x1 &amp;gt;= dis_width or x1 &amp;lt; 0 or y1 &amp;gt;= dis_height or y1 &amp;lt; 0:
+        game_close = True
 
     x1 += x1_change
     y1 += y1_change
     dis.fill(white)
-    pygame.draw.rect(dis, black, [x1, y1, 10, 10])
+    pygame.draw.rect(dis, black, [x1, y1, snake_block,snake_block])
  
     pygame.display.update()
  
