@@ -38,6 +38,8 @@ to_y = 0
 
 character_speed = 0.5
 enemy_speed = 1
+time_elapsed = 0
+spawn_interval = 5
 
 game_over_font = pygame.font.Font(None, 100)
 game_font = pygame.font.Font(None, 40)
@@ -51,7 +53,16 @@ while running:
     dt = clock.tick(30)
     to_y = 0
     to_y += enemy_speed
+    time_elapsed += dt / 1000
+
+    if time_elapsed >= spawn_interval:
+        # 일정 시간이 경과하면 속도와 생성 간격을 조정
+        enemy_speed += 0.2 # 0.2초마다 속도 증가
+        spawn_interval -= 0.5 # 0.5초마다 생성 간격 감소
+        time_elapsed = 0
+    screen.fill((0, 0, 0))
     # 2. 키 입력 이벤트 처리
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
