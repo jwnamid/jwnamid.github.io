@@ -1,9 +1,8 @@
 ---
 layout: post
-title: You're up and running!
+title: 블로그 제작 과정
 ---
 
-# 블로그 제작과정
 ## 1. Github 저장소 생성
 ###  본인의 Github 계정에 접속하여 
 ```sh
