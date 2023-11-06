@@ -13,5 +13,16 @@ layout: default
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
 
-  {% include disqus.html %}
+  {# % include disqus.html % #}
+  <!-- Add the Utterances comment section below -->
+  <div id="comments">
+    <script src="https://utteranc.es/client.js"
+            repo="jwnamid/jwnamid.github.io"
+            issue-term="pathname"
+            label="Comments"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
 </article>
