@@ -18,26 +18,15 @@ title: 댓글 기능 추가 과정
 ## 바로 밑에 이슈 라벨과 테마 선택은 본인이 원하는 것으로 선택하시면 됩니다.
 
 ```
-<!-- Add the Utterances comment section below -->
-
-<div  id="comments">
-
-<script  src="https://utteranc.es/client.js"
-
-repo="jwnamid/jwnamid.github.io"
-
-issue-term="pathname"
-
-label="Comments"
-
-theme="github-light"
-
-crossorigin="anonymous"
-
-async>
-
-</script>
-
-</div>
+ <div id="comments">
+    <script src="https://utteranc.es/client.js"
+            repo="jwnamid/jwnamid.github.io"
+            issue-term="pathname"
+            label="Comments"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
 ```
 ## 마지막으로 해당 코드를 _layout/post.html 경로로 추가해주면 됩니다. 주의할 점은 기본으로 사용하고 있는 disqus와 관련된 코드를 전부 주석으로 처리하고 위의 스크립트를 붙여넣어주시면 됩니다.
