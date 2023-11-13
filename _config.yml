@@ -92,8 +92,3 @@ header_pages:
     url: /posts/
   - title: Number
     url: /contact/
-    
-collections:
-  post:
-    output: true
-    permalink: /:collection/:path/
