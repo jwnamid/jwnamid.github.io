@@ -90,7 +90,10 @@ header_pages:
     url: /
   - title: posts
     url: /posts/
-  - title: Category
-    url: /categories/
   - title: Number
     url: /contact/
+    
+collections:
+  post:
+    output: true
+    permalink: /:collection/:path/
