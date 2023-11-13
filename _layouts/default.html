@@ -27,9 +27,13 @@
           </div>
 
           <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
+            <ul>
+              {% for item in site.header_pages %}
+                <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+              {% endfor %}
+            </ul>
           </nav>
+
         </header>
       </div>
     </div>
