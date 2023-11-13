@@ -86,11 +86,11 @@ exclude:
   - CNAME
   
 header_pages:
-  - title: 홈
-    url: # /
-  - title: 포스트
-    url: # /posts/
-  - title: 카테고리
-    url: # /categories/
-  - title: 연락
-    url: # /contact/
+  - title: Home
+    url: /
+  - title: posts
+    url: /posts/
+  - title: Category
+    url: /categories/
+  - title: Number
+    url: /contact/
