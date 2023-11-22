@@ -1,5 +1,6 @@
 import sys, pygame, random
 from pygame.locals import *
+from menu import MainMenu
 
 class baseballGame():
 	def __init__(self):
@@ -12,14 +13,14 @@ class baseballGame():
 		
 		#self.font_name = '8-BIT WONDER.TTF'
 		self.font_name = pygame.font.get_default_font()
-
-		
 		self.BLACK, self.WHTIE = (0,0,0), (255,255,255)
+		self.curr_menu = MainMenu(self)
 
 	def check_events(self):
 		for  event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				self.running, self.playing = False, False
+				self.curr_menu.run_display = False
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_RETURN:
 					self.START_KEY = True
@@ -57,6 +58,7 @@ class baseballGame():
 				
 
 
+   
 
 
 

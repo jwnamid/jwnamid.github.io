@@ -1,11 +1,11 @@
 from G_baseballGame import baseballGame
 #from G_avoid import avoidGame
 #from G_snake import snakeGame
-#from G_memoryGame import memoryGame
+from G_memoryGame import memoryGame
 
 
-endScene = baseballGame()
+g = baseballGame()
 
 while g.running:
-    g.playing = True
+    g.curr_menu.display
     g.game_loop()
