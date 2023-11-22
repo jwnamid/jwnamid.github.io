@@ -18,6 +18,7 @@
   pip install pygame
   ```
 3. main.py를 실행시켜줍니다.
+<br>
 
 
 
