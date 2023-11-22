@@ -3,8 +3,22 @@
 
 ---
 ### 게임 실행을 위한 준비
-
+#### 사용언어
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> 
+  <br><br>
+
+1. 파일을 다운로드하거나 clone을 하여 자신의 vscode에
+<br>
+  ![htd](pygame-SJ\image\htd.png)
+
+  <br>
+  2. 터미널 또는 명령 프롬프트 창에 이 코드를 입력해줍니다.
+
+  ```
+  pip install pygame
+  ```
+3. main.py를 실행시켜줍니다.
+
 
 
 ___
