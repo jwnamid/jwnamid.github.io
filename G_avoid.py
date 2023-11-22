@@ -15,9 +15,9 @@ pygame.display.set_caption("낙하물 피하기")
 clock = pygame.time.Clock()
 
 # 사용자 게임 초기화 (배경화면, 게임 이미지, 좌표, 속도, 폰트 등)
-background = pygame.image.load("./back.png")
-character = pygame.image.load("./player_small.png")
-enemy = pygame.image.load("./enemy_small.png")
+background = pygame.image.load("./image./back.png")
+character = pygame.image.load("./iamge./player_small.png")
+enemy = pygame.image.load(".image./enemy_small.png")
 
 character_size = character.get_rect().size
 character_width = character_size[0]
