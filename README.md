@@ -109,4 +109,4 @@ R키를 게임 종료 전에도 다시 시작 가능하게 수정 예정
 
 #### 개발중인 사항
 - [ ] 각각의 인게임을 main.py와 연결하기
-[인게임 구현 관련 링크](https://www.youtube.com/watch?v=b_DkQrJxpck 
+[인게임 구현 관련 링크](https://www.youtube.com/watch?v=b_DkQrJxpck  
