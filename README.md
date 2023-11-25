@@ -3,7 +3,7 @@
 
 ---
 ### 게임 실행을 위한 준비
-#### 사용언어
+#### 사용언어 
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> 
   <br><br>
 
