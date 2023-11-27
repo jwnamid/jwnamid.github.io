@@ -4,8 +4,8 @@ import random
 pygame.init() #초기화
 
 # 화면 크기 설정
-screen_width = 480 # 가로 크기
-screen_height = 640 # 세로 크기
+screen_width = 500 # 가로 크기
+screen_height = 500 # 세로 크기
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 # 화면 타이틀 설정
@@ -15,9 +15,9 @@ pygame.display.set_caption("낙하물 피하기")
 clock = pygame.time.Clock()
 
 # 사용자 게임 초기화 (배경화면, 게임 이미지, 좌표, 속도, 폰트 등)
-background = pygame.image.load("C:/git-workspace/pygame-SJ/back.png")
-character = pygame.image.load("C:/git-workspace/pygame-SJ/player_small.png")
-enemy = pygame.image.load("C:/git-workspace/pygame-SJ/enemy_small.png")
+background = pygame.image.load("./image./back.png")
+character = pygame.image.load("./iamge./player_small.png")
+enemy = pygame.image.load(".image./enemy_small.png")
 
 character_size = character.get_rect().size
 character_width = character_size[0]
@@ -38,6 +38,8 @@ to_y = 0
 
 character_speed = 0.5
 enemy_speed = 1
+time_elapsed = 0
+spawn_interval = 5
 
 game_over_font = pygame.font.Font(None, 100)
 game_font = pygame.font.Font(None, 40)
@@ -51,7 +53,16 @@ while running:
     dt = clock.tick(30)
     to_y = 0
     to_y += enemy_speed
+    time_elapsed += dt / 1000
+
+    if time_elapsed >= spawn_interval:
+        # 일정 시간이 경과하면 속도와 생성 간격을 조정
+        enemy_speed += 0.2 # 0.2초마다 속도 증가
+        spawn_interval -= 0.5 # 0.5초마다 생성 간격 감소
+        time_elapsed = 0
+    screen.fill((0, 0, 0))
     # 2. 키 입력 이벤트 처리
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
