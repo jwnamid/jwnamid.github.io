@@ -1,10 +1,11 @@
 # 사천짬뽕 (SacheonJjambbong)
 게임 <사천짬뽕>은 미니게임 천국의 여러 미니게임을 경험할 수 있는 포맷을 따온 게임 입니다.
 <br>
+<br>
 
 #### 사용언어 
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> 
-  <br><br>
+  <br>
 
 > 🚨 현재(2023.11.27) 기준, 아직 게임을 합치는 과정이 끝나지 않아 G_avoid.py / G_memoryGame.py / G_snake.py 파일만 실행가능합니다. 
 ---
