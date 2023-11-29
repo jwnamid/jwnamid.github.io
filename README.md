@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> 
   <br><br>
 
-> 🚨 현재(2023.11.27) 기준, 아직 게임을 합치는 과정이 끝나지 않아 G_avoid.py / G_Breaktheblock.py / G_memoryGame.py / G_snake.py 파일만 실행가능합니다. 
+> 🚨 현재(2023.11.27) 기준, 아직 게임을 합치는 과정이 끝나지 않아 G_avoid.py / G_memoryGame.py / G_snake.py 파일만 실행가능합니다. 
 ---
 ### 게임 실행을 위한 준비
 
@@ -83,38 +83,6 @@ ___
 ___
 
 
-### 4. 블럭 부수기
-
-
-#### 게임 설명
-> 패들을 조작하여 공을 튕겨서 블록을 파괴히여 점수를 휙득하는 게임 
-
-
-#### 조작키
->우측 방향키: 오른쪽 이동  
-좌측 방향키: 왼쪽 이동   
-R키: 게임 종료시 다시시작   
-
-
-#### 게임 TIP 
->공을 파괴할 블록 사이로 넣으면 블록들 사이에서 공이 튕겨서 한번에 많은 블록을 파괴할 수 있다!!!     
-블록이 전부 파괴되면 바로 블록이 생성되는 점을 이용하면 많은 블록을 파괴할수도!!!   
-
-
-#### 게임 세부 설정 
->기본 공 *SPEED* 15  
-스테이지 1 증가시 공 *SPEED* 1씩 증가  
-블록 1개 파괴시 스테이지 만큼 점수 휙득   
-15개 블록 전부 파괴시 바로 다음 스테이지 블록 생성  
-
-
-#### 추후 개발 전망 
->일시정지와 재게 기능 추가 예정  
-R키를 게임 종료 전에도 다시 시작 가능하게 수정 예정 
-
-<br>
-
-___
 
 #### 개발중인 사항
 - [ ] 각각의 인게임을 main.py와 연결하기
@@ -126,7 +94,7 @@ ___
 ## Contributors
 
 
-| [![chaelimee](https://github.com/chaelimee.png)](https://github.com/chaelimee) | [![ParkJeonghyeon1013](https://github.com/ParkJeonghyeon1013.png)](https://github.com/ParkJeonghyeon1013) | [![jwnamid](https://github.com/jwnamid.png)](https://github.com/jwnamid) | [![jrbuckhyun](https://github.com/jrbuckhyun.png)](https://github.com/jrbuckhyun) |
-| :------------------------------------------------------------------------: | :--------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
-|[chaelimee](https://github.com/chaelimee)<br>G_snake.py|        [ParkJeonghyeon1013](https://github.com/ParkJeonghyeon1013)<br>G_memoryGame.py|[jwnamid](https://github.com/jwnamid)<br>G_avoid.py|[jrbuckhyun](https://github.com/jrbuckhyun) <br>G_Breaktheblock.py    |
+| [![chaelimee](https://github.com/chaelimee.png)](https://github.com/chaelimee) | [![ParkJeonghyeon1013](https://github.com/ParkJeonghyeon1013.png)](https://github.com/ParkJeonghyeon1013) | [![jwnamid](https://github.com/jwnamid.png)](https://github.com/jwnamid) | 
+| :------------------------------------------------------------------------: | :--------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: | 
+|[chaelimee](https://github.com/chaelimee)<br>G_snake.py|        [ParkJeonghyeon1013](https://github.com/ParkJeonghyeon1013)<br>G_memoryGame.py|[jwnamid](https://github.com/jwnamid)<br>G_avoid.py|
 
