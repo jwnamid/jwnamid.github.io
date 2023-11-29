@@ -26,7 +26,9 @@
   ```  
   <br>
 
-3. main.py를 실행시켜줍니다. (현재는 아직 완성되지 않아 main.py 대신 G_avoid.py / G_Breaktheblock.py / G_memoryGame.py / G_snake.py를 실행시켜주세요.)
+3. main.py를 실행시켜줍니다. 
+<br>
+(현재는 아직 완성되지 않아 main.py 대신 G_avoid.py / G_Breaktheblock.py / G_memoryGame.py / G_snake.py를 실행시켜주세요.)
 <br>
 
 
