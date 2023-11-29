@@ -4,7 +4,7 @@ import random
 from itertools import product
 from pygame.locals import *
 from pygame.color import Color
-
+'''
 class memoryGame():
 	def __init__(self):
 		pygame.init()
@@ -58,11 +58,10 @@ class memoryGame():
 		self.display.blit(text_surface, text_rect)
 
 
-
-
-
-
 '''
+
+
+
 # the constants
 FPS = 30
 SCREEN_WIDTH = 800
@@ -86,7 +85,7 @@ CIRCLE = 'circle'
 BGCOLOR = Color('blue')
 
 # the main function
-def main():
+def memoryGame():
     global screen, clock
 
     pygame.init()
@@ -290,4 +289,5 @@ def draw_select_box(x, y):
 
 
 if __name__ == '__main__':
-    main()'''
+    memoryGame()
+	

@@ -1,12 +1,12 @@
 from G_baseballGame import baseballGame
-#from G_avoid import avoidGame
-from G_snake import snakeGame
+from G_avoid import avoidGame
 from G_memoryGame import memoryGame
+from G_snake import snakeGame
 
 
-g = snakeGame()
+memoryGame = memoryGame()
+snakeGame = snakeGame()
+avoidGame = avoidGame()
 
-while g.running:
-    g.game_loop()
-
-    
+while memoryGame.running:
+    memoryGame.game_loop()
