@@ -80,21 +80,3 @@ def main():
 if __name__ == "__main__":
     main()
     
-
-'''
-각 파일 연결하는 코드 
-
-from G_baseballGame import baseballGame
-from G_avoid import avoidGame
-from G_memoryGame import memoryGame
-from G_snake import snakeGame
-
-
-memoryGame = memoryGame()
-snakeGame = snakeGame()
-avoidGame = avoidGame()
-
-while memoryGame.running:
-    memoryGame.game_loop()
-
-'''
