@@ -5,19 +5,19 @@ import os
 from pygame.locals import *
 
 def G_snake():
-    game_path = os.path.abspath("pygame-SJ/G_snake.py")
+    game_path = os.path.abspath("game/G_snake.py")
     subprocess.run([sys.executable, game_path])
     print("Selected Game: G_snake")
 
 
 def G_avoid():
-    game_path = os.path.abspath("pygame-SJ/G_avoid.py")
+    game_path = os.path.abspath("game/G_avoid.py")
     subprocess.run([sys.executable, game_path])
     print("Selected Game: G_avoid")
 
 
 def G_memoryGame():
-    game_path = os.path.abspath("pygame-SJ/G_memoryGame.py")
+    game_path = os.path.abspath("game/G_memoryGame.py")
     subprocess.run([sys.executable, game_path], check=True)
     print("Selected Game: G_memoryGame")
 
