@@ -1,34 +1,29 @@
-
 import pygame
 import sys
 import subprocess
 import os
 from pygame.locals import *
 
-
 def G_snake():
-    game_path = os.path.abspath("G_snake.py")
+    game_path = os.path.abspath("pygame-SJ/G_snake.py")
     subprocess.run([sys.executable, game_path])
     print("Selected Game: G_snake")
 
 
 def G_avoid():
-    game_path = os.path.abspath("G_avoid.py")
+    game_path = os.path.abspath("pygame-SJ/G_avoid.py")
     subprocess.run([sys.executable, game_path])
     print("Selected Game: G_avoid")
 
 
 def G_memoryGame():
-    game_path = os.path.abspath("G_memoryGame.py")
-    try:
-        subprocess.run([sys.executable, game_path], check=True)
-        print("Selected Game: G_memoryGame")
-    except subprocess.CalledProcessError as e:
-        print(f"Error while running G_memoryGame: {e}")
+    game_path = os.path.abspath("pygame-SJ/G_memoryGame.py")
+    subprocess.run([sys.executable, game_path], check=True)
+    print("Selected Game: G_memoryGame")
 
 
-def display_text(screen, font, text, x, y):
-    text_surface = font.render(text, True, (0, 0, 0))
+def display_text(screen, font, text, x, y, color):
+    text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect(center=(x, y))
     screen.blit(text_surface, text_rect)
 
@@ -58,7 +53,8 @@ def main():
             text_rect = text.get_rect(center=(width // 2, 50 + i * 50))
             screen.blit(text, text_rect)
 
-        display_text(screen, font, f"Selected Game: {selected_game}", width // 2, height - 50)
+        display_text(screen, font, f"Press Q button to stop play", width // 2, height // 2,(255,0,0))
+        display_text(screen, font, f"Selected Game: {selected_game}", width // 2, height - 50,(0,0,0))
 
         pygame.display.flip()
 
@@ -83,3 +79,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
