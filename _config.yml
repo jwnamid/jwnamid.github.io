@@ -5,12 +5,9 @@ defaults:
     values:
       hide_posts: False
 
-collections:
-  - pages
-
 header_pages:
   - title: Home
-    url: /home/
+    url: /
   - title: Posts
     url: /posts/
 
@@ -35,7 +32,7 @@ footer-links:
   googleplus:
 disqus:
 google_analytics: G-WFE7QRRYJL
-# url:
+url:
 baseurl: ""
 permalink: /:title/
 version: v1.2.0
