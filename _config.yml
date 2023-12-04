@@ -5,6 +5,9 @@ defaults:
     values:
       hide_posts: False
 
+collections:
+  - pages
+
 header_pages:
   - title: Home
     url: /home/
