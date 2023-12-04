@@ -4,23 +4,47 @@ import subprocess
 import os
 from pygame.locals import *
 
+class Option:
+    hovered = False
+
+    def __init__(self, text, pos):
+        self.text = text
+        self.pos = pos
+        self.set_rect()
+        self.draw()
+
+    def draw(self):
+        self.set_rend()
+        screen.blit(self.rend, self.rect)
+
+    def set_rend(self):
+        self.rend = menu_font.render(self.text, True, self.get_color())
+
+    def get_color(self):
+        if self.hovered:
+            return (255, 255, 255)
+        else:
+            return (100, 100, 100)
+
+    def set_rect(self):
+        self.set_rend()
+        self.rect = self.rend.get_rect()
+        self.rect.topleft = self.pos
+
 def G_snake():
     game_path = os.path.abspath("game/G_snake.py")
     subprocess.run([sys.executable, game_path])
     print("Selected Game: G_snake")
-
 
 def G_avoid():
     game_path = os.path.abspath("game/G_avoid.py")
     subprocess.run([sys.executable, game_path])
     print("Selected Game: G_avoid")
 
-
 def G_memoryGame():
     game_path = os.path.abspath("game/G_memoryGame.py")
     subprocess.run([sys.executable, game_path], check=True)
     print("Selected Game: G_memoryGame")
-
 
 def display_text(screen, font, text, x, y, color):
     text_surface = font.render(text, True, color)
@@ -31,14 +55,14 @@ def main():
     pygame.init()
 
     width, height = 800, 600
+    global screen, menu_font
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Main Game")
 
-    # 배경 이미지 로드
     background_image = pygame.image.load("image/common.jpeg")
     background_rect = background_image.get_rect()
 
-    font = pygame.font.Font(None, 36)
+    menu_font = pygame.font.Font(None, 36)
     clock = pygame.time.Clock()
 
     games = [G_snake, G_avoid, G_memoryGame]
@@ -49,12 +73,17 @@ def main():
 
         game_names = ["Snake Game", "Avoid Game", "Memory Game"]
         for i, game_name in enumerate(game_names):
-            text = font.render(game_name, True, (0, 0, 0))
+            text = menu_font.render(game_name, True, (0, 0, 0))
             text_rect = text.get_rect(center=(width // 2, 50 + i * 50))
+
+            if text_rect.collidepoint(pygame.mouse.get_pos()):
+                text = menu_font.render(game_name, True, (255, 255, 255))
+                selected_game = game_names[i]
+
             screen.blit(text, text_rect)
 
-        display_text(screen, font, f"Press Q button to stop play", width // 2, height // 2,(255,0,0))
-        display_text(screen, font, f"Selected Game: {selected_game}", width // 2, height - 50,(0,0,0))
+        display_text(screen, menu_font, f"Press Q button to stop play", width // 2, height // 2, (255, 0, 0))
+        display_text(screen, menu_font, f"Selected Game: {selected_game}", width // 2, height - 50, (0, 0, 0))
 
         pygame.display.flip()
 
@@ -65,7 +94,7 @@ def main():
             elif event.type == MOUSEBUTTONDOWN:
                 x, y = event.pos
                 for i, game in enumerate(games):
-                    text_rect = font.render(game_names[i], True, (0, 0, 0)).get_rect(center=(width // 2, 50 + i * 50))
+                    text_rect = menu_font.render(game_names[i], True, (0, 0, 0)).get_rect(center=(width // 2, 50 + i * 50))
                     if text_rect.collidepoint(x, y):
                         selected_game = game_names[i]
                         games[i]()
@@ -79,4 +108,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
