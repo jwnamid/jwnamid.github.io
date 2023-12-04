@@ -3,7 +3,7 @@ defaults:
     scope:
       path: ""
     values:
-      hide_posts: true
+      hide_posts: false
 
 header_pages:
   - title: Home
