@@ -35,7 +35,7 @@ footer-links:
   googleplus:
 disqus:
 google_analytics: G-WFE7QRRYJL
-url:
+# url:
 baseurl: ""
 permalink: /:title/
 version: v1.2.0
