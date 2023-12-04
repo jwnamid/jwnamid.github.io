@@ -6,8 +6,6 @@ defaults:
       hide_posts: False
 
 header_pages:
-  - title: Home
-    url: /home/
   - title: Posts
     url: /posts/
 
