@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Google Analytics 적용
+categories: posting
 ---
 
 # 1. Google Analytics 계정 설정

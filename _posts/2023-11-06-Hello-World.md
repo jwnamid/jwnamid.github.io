@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 블로그 제작 과정
+categories: posting
 ---
 
 ## 1. Github 저장소 생성
