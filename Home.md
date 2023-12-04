@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Home
-permalink: /about/
+permalink: /home/
 ---
 
 JungWook Nam
