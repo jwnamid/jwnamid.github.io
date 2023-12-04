@@ -1,9 +1,6 @@
 ---
-
 layout: post
-
 title: 댓글 기능 추가 과정
-
 ---
 # 1. Utterances 설치
 [Utterances](https://github.com/apps/utterances)
