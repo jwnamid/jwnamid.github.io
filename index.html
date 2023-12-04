@@ -3,12 +3,10 @@ layout: default
 ---
 
 <div class="posts">
-  {% if page.path == 'index.html' %}
+  {% if page.url == '/' %}
     <!-- Home 페이지에는 소개글이 나오도록 -->
     <div class="entry">
-      공부용 개인 블로그 \
-      성공회대학교 IT융합자율학부 20학번 남정욱 \
-      취미: 게임, 그림 그리기, 음악 <!-- 여기에 소개글 내용 추가 -->
+      성공회대학교 IT융합자율학부 20학번 남정욱 <!-- 여기에 소개글 내용 추가 -->
     </div>
   {% else %}
     <!-- Posts 페이지에는 포스트 목록이 나오도록 -->
